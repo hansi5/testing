@@ -1,0 +1,30 @@
+ame: Test Run Every 5 Minutes
+
+on:
+  workflow_dispatch:        # manual trigger (best for testing)
+  schedule:
+    - cron: '*/5 * * * *'   # every 5 minutes (UTC)
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run main.py
+        env:
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+        run: |
+          python main.py
