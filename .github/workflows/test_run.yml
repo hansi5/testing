@@ -1,12 +1,12 @@
-ame: Test Run Every 5 Minutes
+name: Test Run Every 5 Minutes
 
 on:
-  workflow_dispatch:        # manual trigger (best for testing)
+  workflow_dispatch:        # manual trigger (for testing)
   schedule:
     - cron: '*/5 * * * *'   # every 5 minutes (UTC)
 
 jobs:
-  test-job:
+  run-main:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,10 +17,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
 
       - name: Run main.py
         env:
