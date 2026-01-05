@@ -23,5 +23,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run main.py
+        env:
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           python main.py
