@@ -1,22 +1,27 @@
-name: Test Run Every 5 Minutes
+ame: Test Run Every 5 Minutes
 
 on:
-  workflow_dispatch:      # manual trigger (best for testing)
+  workflow_dispatch:        # manual trigger (best for testing)
   schedule:
-    - cron: '*/5 * * * *' # every 5 minutes (UTC)
+    - cron: '*/5 * * * *'   # every 5 minutes (UTC)
 
 jobs:
   test-job:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Test script
+      - name: Install dependencies
         run: |
-          echo "GitHub Actions is working"
-          python --version
+          pip install -r requirements.txt
+
+      - name: Run main.py
+        run: |
+          python main.py
