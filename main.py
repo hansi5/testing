@@ -18,7 +18,7 @@ try:
         submit = True
         connection.login(user=EMAIL, password=PASSWORD)
         connection.sendmail(from_addr=EMAIL, to_addrs=EMAIL,
-                            msg=f"Subject: message sent!\n\nMessage sent\n\n")
+                            msg=f"Subject: message sent!\n\nMessage sent at {now}\n\n")
 
 except Exception as e:
     print(e)
