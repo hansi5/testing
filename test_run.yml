@@ -16,7 +16,9 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Test script
+      - name: Run main.py
+        env:
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: |
-          echo "GitHub Actions is working"
-          python --version
+          python main.py

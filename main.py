@@ -1,13 +1,10 @@
 
 import smtplib
 import os
-from dotenv import load_dotenv
 from datetime import datetime
 
 now = datetime.now()
 
-# variables for the smtp email
-load_dotenv()
 EMAIL = os.environ.get("EMAIL")
 PASSWORD = os.environ.get("PASSWORD")
 
